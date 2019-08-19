@@ -1,0 +1,13 @@
+{
+  "ID": "service1",
+  "Name": "service_login",
+  "Tags": [
+    "primary"
+  ],
+  "Address": "127.0.0.1",
+  "Port": 9501,
+  "Check": {
+    "HTTP": "http://127.0.0.1:9501",
+    "Interval": "5s"
+  }
+}

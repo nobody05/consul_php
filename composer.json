@@ -1,0 +1,19 @@
+{
+  "authors": [
+    {
+      "name": "phpone"
+    }
+  ],
+  "require": {
+    "guzzlehttp/guzzle": "^6.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "PhpOne\\ConsulSwoole\\": "src/"
+    }
+  },
+  "require-dev": {
+    "eaglewu/swoole-ide-helper": "dev-master",
+    "phpunit/phpunit": "^8.3"
+  }
+}
