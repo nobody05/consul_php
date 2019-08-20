@@ -1,8 +1,16 @@
 <?php
 
+/*
+ * This file is part of PHP CS Fixer.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *     Dariusz Rumiński <dariusz.ruminski@gmail.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
 
 namespace PhpOne\ConsulSwoole\Consul;
-
 
 class Check
 {
@@ -20,7 +28,7 @@ class Check
         $vars = get_object_vars($this);
         $output = [];
         foreach ($vars as $propertyName => $propertyValue) {
-            if ('http' == $propertyName) {
+            if ('http' === $propertyName) {
                 $output[strtoupper($propertyName)] = $propertyValue;
             } else {
                 $output[ucfirst($propertyName)] = $propertyValue;
@@ -29,5 +37,4 @@ class Check
 
         return $output;
     }
-
 }

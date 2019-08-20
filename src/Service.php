@@ -1,5 +1,15 @@
 <?php
 
+/*
+ * This file is part of PHP CS Fixer.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *     Dariusz Rumiński <dariusz.ruminski@gmail.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace PhpOne\ConsulSwoole;
 
 use PhpOne\ConsulSwoole\Consul\Agent;
@@ -16,26 +26,26 @@ class Service
     protected $tcp_ip = '127.0.0.1';
     protected $tcp_port = 9091;
     protected $service_id = 'hello_tcp';
-    protected $service_name='hello_tcp';
+    protected $service_name = 'hello_tcp';
 
     public function __construct()
     {
         $this->http_sw = new \Swoole\Http\Server($this->http_ip, $this->http_port);
         $this->http_sw->set([
             'worker_num' => 1,
-            'daemonize' => false
+            'daemonize' => false,
         ]);
 
         $this->sw = $this->http_sw->addlistener($this->tcp_ip, $this->tcp_port, SWOOLE_SOCK_TCP);
         $this->sw->set([
             'worker_num' => 1,
-            'daemonize' => false
+            'daemonize' => false,
         ]);
-        $this->sw->on('connect', function(Server $server, $fd){
-            echo 'new connect'. $fd;
+        $this->sw->on('connect', function (Server $server, $fd) {
+            echo 'new connect'.$fd;
         });
 
-        $this->sw->on('receive', function(Server $server, $fd, $reactor_id, $message){
+        $this->sw->on('receive', function (Server $server, $fd, $reactor_id, $message) {
             echo 'new receive';
 
             print_r($message);
@@ -50,7 +60,6 @@ class Service
         $this->http_sw->on('Start', [$this, 'onStart']);
         $this->http_sw->on('WorkerStart', [$this, 'onWorkerStart']);
         $this->http_sw->start();
-
     }
 
     public function onStart()
@@ -68,7 +77,7 @@ class Service
 
     public function onWorkerStart()
     {
-        echo 'workerstart'. PHP_EOL;
+        echo 'workerstart'.PHP_EOL;
     }
 
     public function onRequest(Request $request, Response $response)
@@ -77,8 +86,8 @@ class Service
         $response->write('success');
     }
 
-    protected function getFullHttpUrl($ip, $port='80')
+    protected function getFullHttpUrl($ip, $port = '80')
     {
-        return 'http://'. $ip. ':'. $port;
+        return 'http://'.$ip.':'.$port;
     }
 }
