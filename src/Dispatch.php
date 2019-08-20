@@ -13,10 +13,6 @@ class Dispatch
     public function __construct($data)
     {
         $data = json_decode($data, true);
-
-
-        print_r($data);
-
         $this->service = __NAMESPACE__.'\\'. $data['service'];
         $this->method = $data['method'];
         $this->params = $data['params'];

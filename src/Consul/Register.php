@@ -123,12 +123,7 @@ class Register
         foreach ($vars as $propertyName => $propertyValue) {
             $output[ucfirst($propertyName)] = $propertyValue;
         }
-//        var_dump($output);
-
         return $output;
     }
 
 }
-
-$register = new Register();
-$register->output();
