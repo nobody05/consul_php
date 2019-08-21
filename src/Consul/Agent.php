@@ -103,7 +103,7 @@ class Agent
     protected function requrest($method, $url, $params)
     {
         $response = $this->client->request($method, $url, $params);
-        if ('200' === $response->getStatusCode()) {
+        if (200 === $response->getStatusCode()) {
             $data = $response->getBody();
 
             return json_decode($data, true);

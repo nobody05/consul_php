@@ -46,6 +46,8 @@ class Client
 
         $client->on('receive', function (\Swoole\Client $client, $data) {
             echo 'service msg'.$data;
+
+            $client->close();
         });
 
         $client->on('error', function (\Swoole\Client $client) {
